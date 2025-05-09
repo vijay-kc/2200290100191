@@ -7,7 +7,7 @@ const app = express();
 const PORT = 9876;
 const WINDOW_SIZE = 10;
 const TIMEOUT = 500;
-const BEARER_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiZXhwIjoxNzQ2Nzk2MTc1LCJpYXQiOjE3NDY3OTU4NzUsImlzcyI6IkFmZm9yZG1lZCIsImp0aSI6ImIyODJjMjIzLWMzNjItNGJkNi1iZDJmLTE1NTU5YWUzMjE5YiIsInN1YiI6InZpamF5LjIyMjZjc2UxMTYyQGtpZXQuZWR1In0sImVtYWlsIjoidmlqYXkuMjIyNmNzZTExNjJAa2lldC5lZHUiLCJuYW1lIjoidmlqYXkga3VtYXIgY2hhdXJhc2l5YSIsInJvbGxObyI6IjIyMDAyOTAxMDAxOTEiLCJhY2Nlc3NDb2RlIjoiU3hWZWphIiwiY2xpZW50SUQiOiJiMjgyYzIyMy1jMzYyLTRiZDYtYmQyZi0xNTU1OWFlMzIxOWIiLCJjbGllbnRTZWNyZXQiOiJyZld4SFpHdUtiZEdtaENOIn0.ne5NVAn3mSK3uUH2aUatIw7FUbp5iWhAu7baCgehBhI';
+
 
 const apiMap = {
   p: "primes",
@@ -30,7 +30,7 @@ app.get("/numbers/:type", async (req, res) => {
     const timeout = setTimeout(() => source.cancel(), TIMEOUT_MS);
 
     const response = await axios.get(`http://20.244.56.144/evaluation-service/${apiMap[type]}`, {
-      timeout: TIMEOUT_MS,
+      timeout: TIMEOUT,
       cancelToken: source.token,
       headers: {
         Authorization: `Bearer ${BEARER_TOKEN}`
